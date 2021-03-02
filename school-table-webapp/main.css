@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-family: 'DotGothic16', sans-serif;
+}
+
+.title-div {
+    width: 100vw;
+    padding: 1rem;
+    background-color: antiquewhite;
+    margin: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#table {
+    letter-spacing: 2px;
+    border-collapse: collapse;
+    width: 90%;
+  }
+  
+  #table td, #table th {
+    padding: 8px;
+    outline: none;
+    font-weight: bold;
+  }
+  
+  #table td {
+    border: 1px solid #000;
+    background-color: #fff;
+  }
+
+  #table th:nth-child(1) {
+    border-top-left-radius: 30px;
+  }
+
+  #table th:nth-child(2) {
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+  }
+
+  #table th:nth-child(3) {
+    border-top-right-radius: 30px;
+  }
+
+  #table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #A88BEB;
+    color: white;
+    border-bottom: 1px solid #fff;
+  }
+
+  a {
+    text-decoration: none!important;
+    color: #000!important;
+  }
+
+a:hover {
+    text-decoration: underline!important;
+}

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Blogr</title>
+  <link rel="stylesheet" href="./main.css">
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+</head>
+<body>
+  <section id="home">
+    <img src="images/bg-pattern-intro.svg" class="background-pattern"/>
+    <nav>
+      <div class="row-1">
+        <img src="images/logo.svg" alt="logo" class="logo">
+        <img src="images/icon-hamburger.svg" alt="hamburger" class="hamburger open" onclick="navbarCollapse(this)"/>
+      </div>
+        <ul class="navLinks">
+          <li class="navLink">
+            <div class="row-1" onclick="expandNavList()">
+              <h4>Product</h4>
+              <img src="images/icon-arrow-light.svg" class="arrow light"/>
+              <img src="images/icon-arrow-dark.svg" class="arrow dark"/>
+            </div>
+            <ul class="nested-navLinks" style="height: var(--nestedNavbarHeight1);">
+              <li class="nested-navLink">Overview</li>
+              <li class="nested-navLink">Pricing</li>
+              <li class="nested-navLink">Marketplace</li>
+              <li class="nested-navLink">Features</li>
+              <li class="nested-navLink">Integrations</li>
+            </ul>
+          </li>
+          <li class="navLink">
+            <div class="row-1" onclick="expandNavList()">
+              <h4>Company</h4>
+              <img src="images/icon-arrow-light.svg" class="arrow light"/>
+              <img src="images/icon-arrow-dark.svg" class="arrow dark"/>
+            </div>
+            <ul class="nested-navLinks" style="height: var(--nestedNavbarHeight2);">
+              <li class="nested-navLink">About</li>
+              <li class="nested-navLink">Team</li>
+              <li class="nested-navLink">Blog</li>
+              <li class="nested-navLink">Careers</li>
+            </ul>
+          </li>
+          <li class="navLink">
+            <div class="row-1" onclick="expandNavList()">
+              <h4 style="opacity: 1;">Connect</h4> 
+              <img src="images/icon-arrow-light.svg" class="arrow light"/>
+              <img src="images/icon-arrow-dark.svg" class="arrow dark"/>
+            </div>
+            <ul class="nested-navLinks" style="height: var(--nestedNavbarHeight3);">
+              <li class="nested-navLink">Contact</li>
+              <li class="nested-navLink">Newsletter</li>
+              <li class="nested-navLink">LinkedIn</li>
+            </ul>
+          </li>
+        </ul>
+        <div class="buttons">
+          <button class="login">Login</button>
+          <button class="signup">Sign Up</button>
+        </div>
+    </nav>
+    <div class="rest-of-the-homepage">
+      <h1 class="home-h1" style="z-index: 3;">A modern publishing platform</h1>
+      <p class="home-p" style="z-index: 3;">Grow your audience and build your online brand</p>
+      <div class="home-buttons">
+        <button class="free-trial">Start for free</button>
+        <button class="learn-more">Learn more</button>
+      </div>
+    </div>
+  </section>
+  <section id="page-2">
+    <h1>Designed for the future</h1>
+    <div class="row">
+      <div class="text">
+        <h2>Introducing an extensible editor</h2>
+        <p>
+         Blogr features an exceedingly intuitive interface which lets you focus on one thing: creating content. 
+         The editor supports management of multiple blogs and allows easy manipulation of embeds such as images, 
+         videos, and Markdown. Extensibility with plugins and themes provide easy ways to add functionality or 
+         change the looks of a blog.
+        </p>
+        <h2>Robust content management</h2>
+        <p>Flexible content management enables users to easily move through posts. Increase the usability of your blog 
+          by adding customized categories, sections, format, or flow. With this functionality, you’re in full control.</p>
+      </div>
+      <div class="illustration">
+        <img src="images/illustration-editor-desktop.svg" class="editor-desktop" id="editor-desktop"/>
+      </div>
+    </div>
+  </section>
+  <!--page 3-->
+  <section id="page-3">
+    <div class="illustration">
+      <img src="images/bg-pattern-circles.svg" class="background-image"/>
+    </div>
+    <main>
+      <img src="images/illustration-phones.svg" class="phone">
+      <div class="text">
+        <h1>State of the Art Infrastructure</h1>
+        <p>With reliability and speed in mind, worldwide data centers provide the backbone for ultra-fast connectivity. 
+          This ensures your site will load instantly, no matter where your readers are, keeping your site competitive.</p>
+      </div>
+    </main>
+  </section>
+  <!--Page 4-->
+  <section id="page-4">
+    <div class="illustration">
+      <img src="images/illustration-laptop-desktop.svg" class="desktop" id="desktop"/>
+    </div>
+    <div class="text">
+      <h1>Free, open, simple</h1>
+      <p>Blogr is a free and open source application backed by a large community of helpful developers. It supports 
+        features such as code syntax highlighting, RSS feeds, social media integration, third-party commenting tools, 
+        and works seamlessly with Google Analytics. The architecture is clean and is relatively easy to learn.</p>
+      <h1>Powerful tooling</h1>
+      <p>Batteries included. We built a simple and straightforward CLI tool that makes customization and deployment a breeze, but
+        capable of producing even the most complicated sites.</p>
+    </div>
+  </section>
+  <footer>
+    <img src="images/logo.svg" width="101" height="40"/>
+    <ul class="nav-links">
+      <li class="nav-link">
+        <p>Product</p>
+        <ul class="nested-navlinks">
+          <li class="nested-navlink">Overview</li>
+          <li class="nested-navlink">Pricing</li>
+          <li class="nested-navlink">Marketplace</li>
+          <li class="nested-navlink">Features</li>
+          <li class="nested-navlink">Integrations</li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="nav-links">
+      <li class="nav-link">
+        <p>Company</p>
+        <ul class="nested-navlinks">
+          <li class="nested-navlink">About</li>
+          <li class="nested-navlink ">Team</li>
+          <li class="nested-navlink">Blog</li>
+          <li class="nested-navlink">Careers</li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="nav-links">
+      <li class="nav-link">
+        <p>Connect</p>
+        <ul class="nested-navlinks">
+          <li class="nested-navlink">Contact</li>
+          <li class="nested-navlink">Newsletter</li>
+          <li class="nested-navlink">LinkedIn</li>
+        </ul>
+      </li>
+    </ul>
+  </footer>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Aw Yong</a>.
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

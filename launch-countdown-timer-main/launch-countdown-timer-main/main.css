@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@500&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    font-family: 'Red Hat Text';
+    background-color: hsl(234, 17%, 12%);
+}
+
+.title {
+    color: hsl(0, 0%, 100%);
+    width: fit-content;
+    height: fit-content;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 30px;
+    text-align: center;
+}
+
+main {
+    display: flex;
+}
+
+main .test-div1 {
+    height: 80px;
+    width: 120px;
+    background-color: pink;
+    z-index: 1;
+    font-size: 4rem;
+    overflow: hidden;
+    position: relative;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+main .test-div1 span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+main .test-div2 {
+    height: 40px;
+    width: 120px;
+    overflow: hidden;
+    background-color: pink;
+    position: relative;
+    color: rgba(0, 0, 0);
+    font-size: 4rem;
+    z-index: 2;
+    transform: translate(0%, 100%);
+}
+
+main .test-div2 span {
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 0;
+    left: 50%;
+}
+
+main .test-div1 .circle1{
+    z-index: 10;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    background: #000;
+    border-radius: 50%;
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+main .test-div1 .circle2{
+    z-index: 10;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    background: #000;
+    border-radius: 50%;
+    right: 0;
+    top: 50%;
+    transform: translate(50%, -50%);
+}
+
+.attribution { font-size: 11px; text-align: center; color: hsl(0, 0%, 100%); position: absolute; bottom: 0;}
+    .attribution a { color: hsl(228, 45%, 44%); }

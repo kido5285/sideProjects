@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@500&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.attribution { font-size: 11px; text-align: center; color: hsl(0, 0%, 100%); position: absolute; bottom: 0;}
+.attribution a { color: hsl(228, 45%, 44%); }
+
+body {
+    height: 100vh;
+    width: 100vw;
+    max-width: 100vw;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Red Hat Text';
+    background-color: hsl(234, 17%, 12%);
+}
+
+.title {
+    color: hsl(0, 0%, 100%);
+    width: fit-content;
+    height: fit-content;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin: 10vh auto;
+    font-size: 25px;
+    text-align: center;
+}
+
+main {
+    margin: 15vh auto;
+    position: relative;
+}
+
+main .timer {
+    display: flex;
+    width: 450px;
+    justify-content: space-between;
+}
+@media (max-width: 500px) {
+    main .timer {
+        width: 90vw;
+    }
+}
+main .div1 {
+    height: 80px;
+    width: 20%;
+    background-color: rgb(52, 54, 80);
+    color: rgb(251, 96, 135);
+    z-index: 1;
+    font-size: 3rem;
+    overflow: hidden;
+    position: relative;
+}
+
+main .div1 span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+main .div2 {
+    height: 40px;
+    width: 100%;
+    overflow: hidden;
+    background-color: rgb(52, 54, 80);
+    color: rgb(251, 96, 135);
+    position: relative;
+    font-size: 3rem;
+    z-index: 2;
+    transform: translate(0%, 100%);
+}
+
+main .div1 .film {
+    height: 40px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: hsl(235, 16%, 14%);
+    opacity: 0.5;
+    z-index: 10;
+}
+
+main .div2 span {
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 0;
+    left: 50%;
+}
+
+main .div1 .circle1{
+    z-index: 10;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    background: #000;
+    border-radius: 50%;
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+main .div1 .circle2{
+    z-index: 10;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    background: hsl(234, 17%, 12%);
+    border-radius: 50%;
+    right: 0;
+    top: 50%;
+    transform: translate(50%, -50%);
+}
+
+main .units {
+    display: flex;
+    color: hsl(237, 18%, 59%);
+    width: 100%;
+    justify-content: space-between;
+}
+
+main .unit {
+    width: 20%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+footer {
+    position: fixed; 
+    left: 0; 
+    bottom: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(images/pattern-hills.svg);
+    background-position: center;
+    background-size: cover;
+    padding: 50px 0;
+    background-repeat: no-repeat;
+}
+
+footer .social-media {
+    margin: 0 10px;
+    font-size: 1.5rem;
+    color: hsl(237, 18%, 59%);
+    cursor: pointer;
+}
+
+footer .social-media:hover {
+    color: rgb(251, 96, 135);
+}

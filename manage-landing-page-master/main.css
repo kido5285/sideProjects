@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Be Vietnam', sans-serif;
+}
+
+.attribution { font-size: 11px; text-align: center;}
+.attribution a { color: hsl(228, 45%, 44%);}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.3rem 4rem;
+}
+
+nav .row1 {
+    display: flex;  
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav .row1 .hamburger {
+    opacity: 0;
+}
+
+nav .row2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+}
+
+nav .row2 .navLink {
+    display: inline-block;
+    margin: 0 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+nav .row2 .navLink:hover {
+    opacity: 0.7;
+}
+
+nav .row2 button {
+    padding: 0.6rem 1rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    border: 1px solid hsl(12, 88%, 59%);
+    background-color: hsl(12, 88%, 59%);
+    color: #fff; 
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0px 7px 20px -5px hsl(12, 88%, 59%);
+-webkit-box-shadow: 0px 7px 20px -5px hsl(12, 88%, 59%);
+-moz-box-shadow: 0px 7px 20px -5px hsl(12, 88%, 59%)}
+
+nav .row2 button:hover {
+    opacity: 0.7;
+}
+
+@media (max-width: 1021px) {
+    nav {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    nav .row1 {
+        width: 100%;
+    }
+
+    nav .row1 .hamburger {
+        opacity: 1;
+        margin-bottom: 5px;
+    }
+
+    nav .row2 {
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    nav .row2 .navLinks {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px 0;
+    }
+
+    nav .row2 .navLink {
+        display: block;
+        margin: 7px 0;
+    }
+}

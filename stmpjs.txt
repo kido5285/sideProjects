@@ -1,0 +1,4 @@
+username: ggrass1585@gmail.com
+password: 1DC377B00FA2188055242378E531F6DFBE38
+server: smtp.elasticemail.com
+port: 2525

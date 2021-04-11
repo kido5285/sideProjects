@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+  <title>Frontend Mentor | Chat app css illustration</title>
+</head>
+<body>
+  <div class="first-background-block"></div>
+  <a href="#bottom" class="bottom"></a>
+  <main>
+    <div class="phone-case">
+      <header>
+        <div class="sensor"></div>
+        <div class="row-1">
+          <i class="fas fa-chevron-left exit"></i>
+          <img src="images/avatar.jpg" class="profile-pic">
+          <div class="column">
+            <h4>Samuel Green</h4>
+            <p>Available to Walk</p>
+          </div>
+          <i class="fas fa-ellipsis-v setting"></i>
+        </div>
+      </header>
+      <div class="send-message">
+        <div class="messages">
+          <div class="message opponent">
+            That sounds great. I’d be happy with that.
+          </div>
+          <div class="message opponent">
+            Could you send over some pictures of your dog, please?
+          </div>
+          <div class="message me-images">
+            <img src="images/dog-image-1.jpg">
+            <img src="images/dog-image-2.jpg">
+            <img src="images/dog-image-3.jpg">
+          </div>
+          <div class="message me">
+            Here are a few pictures. She’s a happy girl!
+          </div>
+          <div class="message me">
+            Can you make it?
+          </div>
+          <div class="message opponent">
+            She looks so happy! The time we discussed works. How long shall I take her out for?
+          </div>  
+          <div class="message opponent-money">
+            <div class="circle" onclick="clickMoney(this)">
+              <i class="fas fa-check"></i>
+            </div>
+            <span class="descrip">30 minute walk</span>
+            <span class="amount">$29</span>
+          </div>
+          <div class="message opponent-money">
+            <div class="circle" onclick="clickMoney(this)">
+              <i class="fas fa-check"></i>
+            </div>
+            <span class="descrip">1 hour walk</span>
+            <span class="amount">$49</span>
+          </div>
+          <div id="bottom"></div>
+        </div>
+        <form onsubmit="formsubmit(event)">
+          <input type="text" placeholder="Type a message…" class="type-message">
+          <button type="submit">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+    <div id="bottom"></div>
+    <div class="text">
+      <h1>Simple booking</h1>
+      <p>Stay in touch with our dog walkers through the chat interface. This makes it easy to 
+        discuss arrangements and make bookings. Once the walk has been completed you can rate 
+        your   walker and book again all through the chat.</p>
+    </div>
+  </main>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Aw Yong</a>.
+  </div>
+  <div class="last-background-block"></div>
+  <script src="script.js"></script>
+</body>
+</html>

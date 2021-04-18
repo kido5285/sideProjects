@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Frontend Mentor | Rest Countries Api With Color Theme Switch</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    </head>
+    <body>
+        <nav>
+            <h2>Where in the world?</h2>
+            <div class="theme" onclick="theme(this)">
+                <i class="far fa-moon"></i>
+                <span id="mode">Dark Mode</span>
+            </div>
+        </nav>
+        <main>
+            <div class="real-page1" style="display: block;">
+                <section class="row1">
+                    <div class="typebox">
+                        <i class="fas fa-search"></i>
+                        <input type="text" class="searchbar" placeholder="Search for a country..." onchange="search(document.querySelector('.searchbar').value)">
+                    </div>
+                    <div style="position: relative;">
+                        <div class="selections" onclick="area()">
+                            <span>Filter by Region</span>
+                            <i class="fas fa-angle-down"></i>
+                        </div>
+                        <div class="choices">
+                            <div class="choice" onclick="filterRegion('africa')">
+                                <span>Africa</span>
+                            </div>
+                            <div class="choice" onclick="filterRegion('americas')">
+                                <span>America</span>
+                            </div>
+                            <div class="choice" onclick="filterRegion('asia')">
+                                <span>Asia</span>
+                            </div>
+                            <div class="choice" onclick="filterRegion('europe')">
+                                <span>Europe</span>
+                            </div>
+                            <div class="choice" onclick="filterRegion('oceania')">
+                                <span>Oceania</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="page1">
+                    <!-- 
+                    <div class="country">
+                        <img src="https://flagcdn.com/w320/${alphacode2.tolowercase()}.png"> 
+                        <div class="info">
+                            <span class="name">data.name</span>
+                            <span class="key">Population<span class="value">: 81,770,900</span></span>
+                            <span class="key">Region<span class="value">: Europe</span></span>
+                            <span class="key">Capital<span class="value">: Berlin</span></span>
+                        </div>
+                    </div>
+                     -->
+                </div>
+            </div>
+            <div class="real-page2" style="display: none;">
+                <div class="row1">
+                    <button onclick="back()">
+                        <i class="fas fa-long-arrow-alt-left"></i>
+                        <span>Back</span>
+                    </button>
+                </div>
+                <div class="row2">
+                    <div class="column1">
+                        <!-- <img src="https://flagcdn.com/w320/af.png"> -->
+                    </div>
+                    <div class="column2">
+                        <h3 class="name">
+                            Belgium
+                        </h3>
+                        <div class="detail1and2">
+                            <div class="detail1">
+                                <span class="key native-name">Native Name:<span class="value"> </span></span>
+                                <span class="key population">Population:<span class="value"> </span></span>
+                                <span class="key region">Region:<span class="value"> </span></span>
+                                <span class="key sub-region">Sub Region:<span class="value"> </span></span>
+                                <span class="key capital">Capital:<span class="value"> </span></span>
+                            </div>
+                            <div class="detail2">
+                                <span class="key top-level-domain">Top Level Domain:<span class="value"></span></span>
+                                <span class="key currencies">Currencies:<span class="value"></span></span>
+                                <span class="key languages">Languages:<span class="value"></span></span>
+                            </div>
+                        </div>
+                        <div class="detail3">
+                            <span class="key"> Border Countries:</span>
+                            <div class="borders">
+                                <!-- <div class="border">France</div>
+                                <div class="border">Germany</div>
+                                <div class="border">Netherlands</div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <script src="script.js"></script>
+    </body>
+</html>

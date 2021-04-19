@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | IP Address Tracker</title>
+  <link rel="stylesheet" href="main.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+</head>
+<body>
+  <header>
+    <h1 class="title">IP Address Tracker</h1>
+    <form>
+        <input type="text" placeholder="Search for any IP address or domain">
+        <button type="submit"><img src="images/icon-arrow.svg"></button>
+    </form>
+    <div class="main">
+      <div class="data">
+        <span class="label">IP Address</span>
+        <h3 class="ip"></h3>
+      </div>
+      <div class="data">
+        <span class="label">Location</span>
+        <h3 class="location"></h3>
+      </div>
+      <div class="data">
+        <span class="label">Timezone</span>
+        <h3 class="timezone"><span>UTC</span></h3>
+      </div>
+      <div class="data">
+        <span class="label">ISP</span>
+        <h3 class="isp"></h3>
+      </div>
+    </div>
+  </header>
+  <div class="map"></div>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Aw Yong</a>.
+  </div>
+  <script src="script.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIwzALxUPNbatRBj3Xi1Uhp0fFzwWNBkE&callback=initMap&libraries=&v=weekly" async></script>
+</body>
+</html>

@@ -1,0 +1,360 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Josefin Sans';
+    transition: background-color 500ms;
+    user-select: none;
+}
+
+:root {
+    --bodyBg: rgba(255, 255, 255, 0.8);
+    --mode: none;
+    --lastRowColor: hsl(235, 19%, 35%);
+    --inputColor: hsl(235, 19%, 35%); 
+    --bg: #fff;
+    --color: hsla(235, 19%, 35%, 1);
+    --radioOutline: hsl(233, 11%, 84%);
+    --taskBorder: hsl(233, 11%, 84%);
+    --radioBlock: none;
+}
+
+/*--bodyBg: #000; dark mode
+  --mode: none;
+  --lastRowColor: hsl(235, 19%, 35%);
+  --inputColor: #fff;   
+  --bg: hsl(235, 24%, 19%);
+  --color: #fff;
+  --taskBorder: hsl(235, 19%, 35%);
+  --radioBlock: block;
+  --radioOutline: hsl(235, 24%, 19%); */
+
+    /* --bodyBg: #fff;light mode
+    --mode: none;
+    --lastRowColor: hsl(235, 19%, 35%);
+    --inputColor: hsl(235, 19%, 35%); 
+    --bg: #fff;
+    --color: hsla(235, 19%, 35%, 1);
+    --radioOutline: hsl(233, 11%, 84%);
+    --taskBorder: hsl(233, 11%, 84%);
+    --radioBlock: none;
+     */
+
+body {
+    background-color: var(--bodyBg);
+    overflow-x: hidden;
+}
+
+.top-bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.top-bg img{
+    width: 100%;
+    z-index: -1;
+}
+
+.main {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    margin: 70px auto;
+}
+
+.row1 {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.row1 .title{
+    font-size: 2.3rem;
+    letter-spacing: 17px;
+    font-weight: 900;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.row1 img{
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+}
+
+.row2 {
+    width: 100%;
+    padding: 17px 19px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg);
+    border-radius: 7px;
+    box-shadow: 0px 10px 30px rgba(0,0,0, 0.25);
+}
+.radio{
+    width: 34px;
+    height: 30px;
+    padding: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid var(--radioOutline);
+    cursor: pointer;
+    position: relative;
+}
+
+.row2 .radio:active {
+    --radioBlock: none; 
+}
+
+.task .radio .block{
+    display: var(--radioBlock);
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 28px;
+    height: 26px;
+    background-color: var(--bg);
+    border-radius: 50%;
+}
+
+.task .radio:focus {
+    --radioBlock: none;
+}
+
+.radio:hover{
+    --radioBlock: block;
+    background-image: linear-gradient(45deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%))  !important;
+}
+
+.row2 .input{
+    width: 100%;
+    outline: none;
+    border: none;
+    font-size: 1.3rem;
+    margin-left: 20px;
+    height: 40px;
+    color: var(--inputColor);
+    background-color: var(--bg);
+}
+
+.row2 .radio .block{
+    display: var(--radioBlock);
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 26px;
+    height: 26px;
+    background-color: var(--bg);
+    border-radius: 50%;
+}
+
+.row2 .input::placeholder{
+    color: hsl(236, 9%, 61%);
+}
+
+.tasks {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+    box-shadow: 0px 10px 40px rgba(0,0,0, 0.25);
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.tasks .task:first-child {
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.tasks .task{
+    width: 100%;
+    padding: 17px 19px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--taskBorder);
+    cursor: pointer;
+    background-color: var(--bg);
+    box-shadow: 0px 10px 10px rgba(0,0,0, 0.05);
+}
+
+.tasks .task:hover {
+    --mode: block;
+}
+
+.tasks .task .closeIcon{
+    display: var(--mode);
+    cursor: pointer;
+}
+
+.tasks .task .column1 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.tasks .task .column1 .radio{
+    width: 35px;
+}
+
+.tasks .task .column1 .descrip {
+    width: 100%;
+    margin-left: 20px;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--color);
+    word-break: break-all;
+}
+
+.finished .descrip {
+    text-decoration: line-through!important;
+    color: hsla(235, 19%, 35%, 0.842)!important;
+}
+
+.finished .radio {
+    --radioBlock: none; 
+    background-image: linear-gradient(45deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+
+.lastRow {
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg);
+    color: var(--lastRowColor)!important;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    box-shadow: 0px 30px 30px rgba(0,0,0, 0.1);
+}
+
+.lastRow .column2 {
+    color: hsla(235, 19%, 35%, 0.75);
+    font-weight: 700;
+}
+
+.lastRow .column2 span{
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.lastRow .column2 span:hover{
+    color: var(--lastRowColor)!important;
+}
+
+.lastRow .column3 {
+    color: hsla(235, 19%, 35%, 0.75);
+}
+
+.lastRow .column3:hover {
+    cursor: pointer;
+    color: var(--lastRowColor)!important;
+}
+
+.selected {
+    color: hsl(220, 98%, 61%)!important;
+}
+
+.mobileLastRow{
+    width: 100%;
+    padding: 20px;
+    background-color: var(--bg);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    border-radius: 7px;
+    box-shadow: 0px 10px 40px rgba(0,0,0, 0.25);
+}
+
+.mobileLastRow span{
+    margin: 0 5px;
+    color: var(--lastRowColor);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.mobileLastRow span:hover {
+    color: var(--lastRowColor)!important;
+}
+
+@media (max-width: 650px) {
+    body {
+        --mode: block;
+    }
+
+    .main {
+        max-width: none;
+        width: auto;
+        margin: 50px 25px;
+    }
+
+    .row2 .input{
+        font-size: 1.1rem;
+    }
+
+    .lastRow .column2{
+        display: none;
+    }
+
+    .mobileLastRow {
+        display: flex;
+    }
+
+    .tasks .task .closeIcon {
+        display: block!important;
+    }
+}
+
+@media (max-width: 561px) {
+    .task .radio .block{
+        width: 97%;
+    }
+}
+
+.info {
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+    color: var(--color);
+}
+
+.attribution {
+    width: fit-content;
+    position: sticky;
+    z-index: 0;
+    left: 0;    
+    right: 0; 
+    font-size: 0.8rem;
+    margin-left: auto; 
+    margin-right: auto; 
+    bottom: 10px;
+    color: var(--color);
+}
+
+.remove {
+    animation: move 200ms linear 1;
+}
+
+@keyframes move {
+    0% {
+        margin-left: 0;
+        background-color: var(--bg);
+    }
+    100% {
+        margin-left: 110%;
+        background-color: var(--bg);
+    }
+}

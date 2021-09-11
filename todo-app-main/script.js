@@ -1,274 +1,272 @@
-window.onload = () => {
-    var width = window.innerWidth;
-    if(width > 600) {
-        document.querySelector('.tab-1').classList.add('highlight')
-        document.querySelector('.mobile-tab').style.display = 'none'
-        document.querySelector('.tabs').style.display = 'flex'
-        highlight('tab-1')
+const bgImg = document.querySelector('.top-bg img');
+let gmode = 'light';
+class todo{
+    constructor(){
+        this.active = [];
+        this.finished = [];
+        this.all = [];
     }
-    if(width <= 600) {
-        document.querySelector('.tabs').style.display = 'none'
-        document.querySelector('.mobile-tab').style.display = 'flex'
-        document.querySelector('.tab-4').classList.add('highlight')
-        highlight('tab-4')
+    
+    addItem(item){
+        let index = this.all.indexOf(item);
+        if(index === -1){
+            this.active.push(item);
+            this.all.push(item);
+        }
+    }
+    
+    finishTask(item){
+        let index = this.active.indexOf(item);
+        if(index !== -1){
+            this.active.splice(index, 1);
+            this.finished.push(item);
+        }
+    }
+    
+    unfinishTask(item){
+        let index = this.finished.indexOf(item);
+        if(index !== -1){
+            this.finished.splice(index, 1);
+            this.active.push(item);
+        }
+    }
+
+    resetFinished() {
+        this.all.forEach(item => {
+            if(this.all.includes(item)){
+                index = this.all.indexOf(item);
+                this.all.splice(index, 1);
+            }
+        })
+        this.finished = [];
+    }
+    
+    get retFinishTask(){
+        return this.finished;
+    }
+    
+    get retActiveTask(){
+        return this.active;
+    }
+    
+    get allTask(){
+        return this.all;
+    }
+    
+    retItemStatus(item){
+        if(this.active.includes(item)){
+            return {item, status: 'active'};
+        }
+        if(this.finished.includes(item)){
+            return {item, status: 'completed'};
+        }
+        return {item, status:'Does not exist'};
+    }
+    
+    removeTask(item){
+        let itemstatus = this.retItemStatus(item);
+        if(itemstatus.status === 'active'){
+            let allIn = this.all.indexOf(item);
+            let activeIn = this.active.indexOf(item);
+            this.all.splice(allIn, 1);
+            this.active.splice(activeIn, 1);
+        }
+        if(itemstatus.status === 'completed'){
+            let allIn = this.all.indexOf(item);
+            let finishIn = this.finished.indexOf(item);
+            this.all.splice(allIn, 1);
+            this.finished.splice(finishIn, 1);
+        }
     }
 }
-
-window.addEventListener('resize', () => {
-    var width = window.innerWidth;
-    if(width > 600) {
-        document.querySelector('.tab-1').classList.add('highlight')
-        document.querySelector('.mobile-tab').style.display = 'none'
-        document.querySelector('.tabs').style.display = 'flex'
-        highlight('tab-1')
-    }
-    if(width <= 600) {
-        document.querySelector('.tabs').style.display = 'none'
-        document.querySelector('.mobile-tab').style.display = 'flex'
-        document.querySelector('.tab-4').classList.add('highlight')
-        highlight('tab-4')
+window.addEventListener('load', () => {
+    if(window.innerWidth <= 550){
+        bgImg.src = `images/bg-mobile-${gmode}.jpg`;
+    } else {
+        bgImg.src = `images/bg-desktop-${gmode}.jpg`;
     }
 })
 
-var numArr = []
-var counter = 0;
+window.addEventListener('resize', () => {
+    if(window.innerWidth <= 550){
+        bgImg.src = `images/bg-mobile-${gmode}.jpg`;
+    } else {
+        bgImg.src = `images/bg-desktop-${gmode}.jpg`;
+    }
+})
 
-function highlight(num, obj) {
-    numArr.push(num);
-    counter++;
-    var previous = document.querySelectorAll(`.${numArr[counter-2]}`);
-    var next = document.querySelectorAll(`.${numArr[counter-1]}`);
-    previous.forEach(singlePrevious => {
-        if(singlePrevious.classList.contains('highlight')) {
-            singlePrevious.classList.remove('highlight')
-        }
-    })
-    next.forEach(singleNext => {
-        if(singleNext.classList.contains('highlight')) {
+let modeIcon = document.querySelector('.row1 .modeIcon');
+function switchMode(mode){
+    gmode = mode === 'light' ? 'dark' : 'light';
+    if(gmode === 'light'){
+        modeIcon.src = 'images/icon-moon.svg';
+        if(window.innerWidth <= 550){
+            bgImg.src = `images/bg-mobile-${gmode}.jpg`;
         } else {
-            singleNext.classList.add('highlight');
+            bgImg.src = `images/bg-desktop-${gmode}.jpg`;
         }
+        document.documentElement.style.setProperty('--bodyBg', '#fff');
+        document.documentElement.style.setProperty('--mode', 'none');
+        document.documentElement.style.setProperty('--lastRowColor', 'hsl(235, 19%, 35%)');
+        document.documentElement.style.setProperty('--inputColor', ' hsl(235, 19%, 35%)');
+        document.documentElement.style.setProperty('--bg', '#fff');
+        document.documentElement.style.setProperty('--color', 'hsla(235, 19%, 35%, 1)');
+        document.documentElement.style.setProperty('--radioOutline', 'hsl(233, 11%, 84%)');
+        document.documentElement.style.setProperty('--taskBorder', 'hsl(233, 11%, 84%)');
+        document.documentElement.style.setProperty('--radioBlock', 'none');
+    } else {
+        modeIcon.src = 'images/icon-sun.svg';
+        if(window.innerWidth <= 550){
+            bgImg.src = `images/bg-mobile-${gmode}.jpg`;
+        } else {
+            bgImg.src = `images/bg-desktop-${gmode}.jpg`;
+        }
+        document.documentElement.style.setProperty('--bodyBg', '#000');
+        document.documentElement.style.setProperty('--mode', 'none');
+        document.documentElement.style.setProperty('--lastRowColor', 'hsl(235, 19%, 35%)');
+        document.documentElement.style.setProperty('--inputColor', '#fff');
+        document.documentElement.style.setProperty('--bg', 'hsl(235, 24%, 19%)');
+        document.documentElement.style.setProperty('--color', '#fff');
+        document.documentElement.style.setProperty('--taskBorder','hsl(235, 19%, 35%)');
+        document.documentElement.style.setProperty('--radioBlock', 'block');
+        document.documentElement.style.setProperty('--radioOutline','hsl(235, 24%, 19%)');
+    }
+}
+modeIcon.addEventListener('click', () => switchMode(gmode));
+
+let radioBlock = document.querySelector('.row2 .radio .block');
+let radio = document.querySelector('.row2 .radio');
+let all = document.querySelector('.lastRow .column2 .btn1');
+let tasks = document.querySelector('.tasks');
+let selected = '';
+document.querySelectorAll('.selected').forEach(item => selected = item.innerHTML.toLowerCase().trim());
+let todoList = new todo();
+let num = 0;
+let itemsNum = document.querySelector('.itemsNum');
+let clearComplete = document.querySelector('.clearFinish');
+function appendTodo(description, type = 'nothing'){
+    let divTask = document.createElement('DIV');
+    divTask.classList.add('task', type);
+    let col1 = document.createElement('DIV');
+    col1.classList.add('column1');
+    let col2 =  document.createElement('DIV');
+    col2.classList.add('cloumn2');
+    let radiobtn = document.createElement('DIV');
+    radiobtn.classList.add('radio');
+    radiobtn.onclick = (i) => finishTask(i);
+    let checkicon = document.createElement('IMG');
+    checkicon.src = 'images/icon-check.svg';
+    checkicon.classList.add('check');
+    let radioblock = document.createElement('DIV');
+    radioblock.classList.add('block');
+    let des = document.createElement('SPAN');
+    des.classList.add('descrip');
+    let text = document.createTextNode(description);//des
+    let closeicon = document.createElement('IMG');
+    closeicon.classList.add('closeIcon');
+    closeicon.src = 'images/icon-cross.svg';
+    closeicon.onclick = (i) => deleteTask(i.target);
+    des.appendChild(text);
+    radiobtn.appendChild(radioblock);
+    radiobtn.appendChild(checkicon);
+    col1.appendChild(radiobtn);
+    col1.appendChild(des);
+    col2.appendChild(closeicon);
+    divTask.appendChild(col1);
+    divTask.appendChild(col2);
+    tasks.appendChild(divTask);
+}
+
+function inputType(e){
+    if(e.key === 'Enter'){
+        e.preventDefault();
+        document.querySelector('.row2 .radio').click();
+    }
+}
+
+document.querySelector('.row2 .radio').onclick = () => {
+    let inputValue = document.querySelector('.input').value.trim();
+    if(!inputValue) return;
+    if(todoList.retItemStatus(inputValue).status === 'Does not exist'){
+        let mode = '';
+        document.querySelectorAll('.selected').forEach(item => mode = item.innerHTML.trim().toLowerCase());
+        todoList.addItem(inputValue);
+        if(mode !== 'completed') {
+            appendTodo(inputValue);
+        }
+        document.querySelector('.input').value = ''
+    } else {
+        document.querySelector('.input').value = 'It already In the list';
+    }
+    itemsNum.innerHTML = todoList.retActiveTask.length;
+}
+
+function finishTask(i){
+    let parent = i.target;
+    if(parent.classList[0] == 'check' || parent.classList[0] == 'block'){
+        parent = i.target.parentElement.parentElement;
+    } else {
+        parent = i.target.parentElement;
+    }
+    let txt = parent.querySelector('.descrip').innerHTML;
+    let mode = '';
+    document.querySelectorAll('.selected').forEach(item => mode = item.innerHTML.trim().toLowerCase());
+    if(todoList.retItemStatus(txt).status === 'active' && mode !== 'completed') {
+        todoList.finishTask(txt);
+        parent.classList.toggle('finished');
+    } else if(todoList.retItemStatus(txt).status === 'completed' && mode !== 'completed'){ 
+        todoList.unfinishTask(txt);
+        parent.classList.toggle('finished');
+    } else if(mode === 'completed' || mode === 'active'){
+        document.querySelector('.selected').click();
+    }
+    itemsNum.innerHTML = todoList.retActiveTask.length;
+}
+
+function deleteTask(i){
+    let parent = i.parentElement.parentElement;
+    let txt = parent.querySelector('.descrip').innerHTML;
+    todoList.removeTask(txt);
+    parent.classList.add('remove');
+    parent.addEventListener('animationend', () => {
+        parent.remove();
     })
-    console.log(numArr, counter, previous, next)
+    itemsNum.innerHTML = todoList.retActiveTask.length;
 }
 
-var classCounter = 0;
-function subClassNum() {
-    classCounter--;
-} 
-
-function removeItemFromArray(array, item) {
-    var index = array.findIndex(() => item);
-    var copyArr = [...array]
-    return copyArr.splice(index, 1);
-}
-
-//App
-var app = new function() {
-    this.el = document.getElementById('tasks')
-    this.tasks = [];
-    this.completeTasks =[];
-    this.activeTasks = [];
-    var length1;
-    var tab1 = document.querySelector('.tab-1')
-    var tab2 = document.querySelector('.tab-2')
-    var tab3 = document.querySelector('.tab-3')
-    var tab4 = document.querySelector('.tab-4')
-    var tab5 = document.querySelector('.tab-5')
-    var tab6 = document.querySelector('.tab-6')
-    this.FetchAll = function() {
-        var data = '';
-        classCounter++;
-        length1 = this.tasks.length;
-        this.activeTasks = Array.from(document.querySelectorAll('.taskActive'));
-        copyArr = [...this.activeTasks]
-        for(let i=0; i < copyArr.length; i++) {
-            copyArr[i] = copyArr[i].querySelector('.descrip').innerHTML
-        }
-        this.activeTasks = copyArr;
-        console.log(this.tasks, this.completeTasks, this.activeTasks, copyArr)
-        if(this.tasks.length > 0) {
-            if(document.querySelector('.tab-1').classList.contains('highlight') || document.querySelector('.tab-4').classList.contains('highlight')) {
-                for(i=0; i<this.tasks.length;i++) {
-                    if(this.completeTasks.length > 0) {
-                        for(let j=0; j < this.completeTasks.length; j++) {
-                            if(this.tasks[i] !== this.completeTasks[j]) {
-                                data += '<div class="task taskActive counter">'
-                                data += '<div class="circle" onclick="app.CompleteTheTask(this)">'
-                                data += '<img src="images/icon-check.svg" unselectable="on" alt="check" class="check">'
-                                data += '</div>'
-                                data += '<span class="descrip">' + this.tasks[i] +'</span>'
-                                data += '<button onclick="app.Edit('+i+')" class="edit-btn">Edit</button>'
-                                data += '<img src="images/icon-cross.svg" alt="cross" unselectable="on" class="cross" onclick="app.Delete('+i+')" onmousedown="subClassNum()">'
-                                data += '</div>'
-                            } else if(this.tasks[i] === this.completeTasks[j]) {
-                                data += '<div class="task taskCompleted counter">'
-                                data += '<div class="circle changeCircleBg" onclick="app.CompleteTheTask(this)">'
-                                data += '<img src="images/icon-check.svg" unselectable="on" alt="check" class="check">'
-                                data += '</div>'
-                                data += '<span class="descrip strike">' + this.tasks[i] +'</span>'
-                                data += '<button onclick="app.Edit('+i+')" class="edit-btn">Edit</button>'
-                                data += '<img src="images/icon-cross.svg" alt="cross" unselectable="on" class="cross" onclick="app.Delete('+i+')" onmousedown="subClassNum()">'
-                                data += '</div>'
-                            }
-                        }
-                    }
-                    else if(this.tasks.length > 0) {
-                        data += '<div class="task taskActive counter">'
-                        data += '<div class="circle" onclick="app.CompleteTheTask(this)">'
-                        data += '<img src="images/icon-check.svg" unselectable="on" alt="check" class="check">'
-                        data += '</div>'
-                        data += '<span class="descrip">' + this.tasks[i] +'</span>'
-                        data += '<button onclick="app.Edit('+i+')" class="edit-btn">Edit</button>'
-                        data += '<img src="images/icon-cross.svg" alt="cross" unselectable="on" class="cross" onclick="app.Delete('+i+')" onmousedown="subClassNum()">'
-                        data += '</div>'
-                    }  
-                }
-            }
-        }
-        return this.el.innerHTML = data;
-    };
-    
-    
-    this.Add = function() {
-        el = document.getElementById('add-todo');
-        var task = el.value;
-        if(task) {
-            this.tasks.push(task.trim())
-            el.value = '';
-            this.FetchAll();
-        }
-        this.FetchAll();
-    };
-
-    this.Edit = function(item) {
-        el = document.getElementById('edit-todo');
-        el.value = this.tasks[item]
-        document.getElementById('edit-box').style.display = 'flex';
-        self = this;
-        classCounter--;
-        document.getElementById('save-edit').onsubmit = function() {
-            var task = el.value;
-            if(task) {
-                self.tasks.splice(item, 1, task.trim());
-                self.FetchAll();
-                CloseInput();
-            }
-        }
-    };
-
-    this.Delete = function(item) {
-        classCounter = classCounter - 1;
-        this.tasks.splice(item, 1);
-        var text;
-        for(let j=0; j < this.completeTasks.length; j++) {
-            if(this.completeTasks.length > 0) {
-                text = this.completeTasks[j];
-                var index = this.completeTasks.findIndex(() => text)
-                console.log(this.completeTasks, index, text)
-                this.completeTasks.splice(index, 1)
-                if(text === this.tasks[item]) {
-                    console.log(this.completeTasks, index)
-                }
-            }
-        }
-        this.FetchAll();
-    };
-
-    
-    this.Count = function(data) {
-        var el = document.getElementById('counter');
-        var name = ' items';
-        var arr = Array.from(document.querySelectorAll('.taskCompleted'));
-        if( length1 - arr.length <= 0) {
-            el.innerHTML = 'No todo'
-        }
-        if(length1 - arr.length === 1) {
-            el.innerHTML = '1 todo'
-        }
-        if(length1 - arr.length > 1) {
-            el.innerHTML = length1 - arr.length + ' todos'
-        }
+clearComplete.addEventListener('click', () => {
+    todoList.resetFinished();
+    document.querySelector('.tasks').innerHTML = '';
+    if(selected !== 'completed'){
+        todoList.retActiveTask.forEach(des => appendTodo(des));
     }
-    this.Count();
+})
 
-    setInterval(this.Count, 100)
-    this.CompleteTheTask = function(obj) {
-    var parentElem = obj.parentNode;
-    var descrip = parentElem.querySelector('.descrip')
-    var circle = parentElem.querySelector('.circle')
-    var completeText = descrip.innerHTML;
-    var index = this.completeTasks.findIndex(() => completeText)
-    descrip.classList.toggle('strike')
-    circle.classList.toggle('changeCircleBg')
-        if(parentElem.classList.contains('taskActive')) {
-            parentElem.classList.remove('taskActive')
-            parentElem.classList.add('taskCompleted')
-            classCounter--;
-            this.completeTasks.push(completeText)
-            console.log(this.completeTasks)
-            this.FetchAll();
-        } else if(parentElem.classList.contains('taskCompleted')) {
-            parentElem.classList.add('taskActive')
-            parentElem.classList.remove('taskCompleted')
-            classCounter++;
-            this.completeTasks.splice(index, 1)
-            console.log(this.completeTasks)
-            this.FetchAll();
-        }
-    }  
-    this.clearComplete = () => {
-        var arr = Array.from(document.querySelectorAll('.taskCompleted'));
-        var text;
-        var index = this.tasks.indexOf(text);
-        var completeText;
-        for(let j=0; j < this.completeTasks.length; j++) {
-            completeText = this.completeTasks[j];
-            var completeIndex = this.completeTasks.findIndex(() => completeText)
-            this.completeTasks.splice(completeIndex, this.completeTasks.length)
-            console.log(this.completeTasks)
-        }
-        if(arr.length > 0) {
-            classCounter--;
-                for(let i=0; i < arr.length; i++) {
-                text = arr[i].querySelector('.descrip').innerText;
-                this.tasks.splice(index, 1)
-                var data = '';
+function switchTask(select){
+    document.querySelector('.tasks').innerHTML = '';
+    if(select === 'all'){
+        document.querySelectorAll(`.${selected}`).forEach(item => item.classList.remove('selected'))
+        selected = select;
+        document.querySelectorAll(`.${select}`).forEach(item => item.classList.add('selected'))
+        todoList.allTask.forEach(item => {
+            let stat = todoList.retItemStatus(item).status;
+            if(stat === 'completed'){
+                appendTodo(item, 'finished');
+            } else if(stat === 'active'){
+                appendTodo(item);
             }
-            if(this.tasks.length > 0) {
-                    for(i=0; i<this.tasks.length;i++) {
-                            if(arr.length = 0) {
-                                console.log('none')
-                            } else {
-                                data += '<div class="task taskActive counter"  >'
-                                data += '<div class="circle" onclick="app.CompleteTheTask(this)">'
-                                data += '<img src="images/icon-check.svg" unselectable="on" alt="check" class="check">'
-                                data += '</div>'
-                                data += '<span class="descrip">' + this.tasks[i] +'</span>'
-                                data += '<button onclick="app.Edit('+i+')" class="edit-btn">Edit</button>'
-                                data += '<img src="images/icon-cross.svg" alt="cross" unselectable="on" class="cross" onclick="app.Delete('+i+')" onmousedown="subClassNum()">'
-                                data += '</div>'
-                            }
-                        }
-                    }
-                        this.Count(this.tasks.length);
-                        return this.el.innerHTML = data;
-            }
-        }
+        })
     }
-app.FetchAll();
-
-function CloseInput() {
-    document.getElementById('edit-box').style.display = 'none';
-}
-
-function removeElementsByClass(className){
-    var elements = document.getElementsByClassName(className);
-    while(elements.length > 0){
-        elements[0].parentNode.removeChild(elements[0]);
+    if(select === 'active'){
+        document.querySelectorAll(`.${selected}`).forEach(item => item.classList.remove('selected'))
+        selected = select;
+        document.querySelectorAll(`.${select}`).forEach(item => item.classList.add('selected'))
+        todoList.retActiveTask.forEach(item => appendTodo(item))
+    }
+    if(select === 'completed'){
+        document.querySelectorAll(`.${selected}`).forEach(item => item.classList.remove('selected'))
+        selected = select;
+        document.querySelectorAll(`.${select}`).forEach(item => item.classList.add('selected'))
+        todoList.retFinishTask.forEach(item => appendTodo(item, 'finished'))
     }
 }
-
-var clearComplete = document.querySelector('.clear-completed')
-
-

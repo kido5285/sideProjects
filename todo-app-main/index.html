@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+  <title>Frontend Mentor | Todo app</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="top-bg"><img src="images/bg-desktop-light.jpg"/></div>
+  <div class="main">
+    <div class="row1">
+      <span class="title">Todo</span>
+      <img class="modeIcon" src="images/icon-moon.svg"/>
+    </div>
+    <div class="row2">
+        <div class="radio"><div class="block"></div><img src="images/icon-check.svg" class="check"></div>
+        <input type="text" class="input" placeholder="Create a new todo..." onkeydown="inputType(event)"/>
+    </div>
+    <div class="tasks">
+    </div>
+    <div class="lastRow">
+      <div class="column1">
+        <span class="itemsNum">0</span><span> items left</span>
+      </div>
+      <div class="column2">
+      <span class="btn1 selected all" onclick="switchTask('all')">All</span>
+      <span class="btn2 active" onclick="switchTask('active')">Active </span>
+      <span class="btn3 completed" onclick="switchTask('completed')">Completed</span>
+      </div>
+      <div class="column3">
+        <span class="clearFinish">Clear Completed</span>
+      </div>
+    </div>
+    <div class="mobileLastRow">
+      <span class="btn1 selected all" onclick="switchTask('all')">All</span>
+      <span class="btn2 active" onclick="switchTask('active')">Active </span>
+      <span class="btn3 completed" onclick="switchTask('completed')">Completed</span>
+    </div>
+  </div>
+  <!-- Add dynamic number -->
+
+  <span class="info">Drag and drop to reorder list</span>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

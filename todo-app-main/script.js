@@ -4,7 +4,7 @@ let valid = typeof(Storage) !== 'undefined';
 class todo{
     constructor(){
         if(valid){
-            if(localStorage.getItem('active') === '' || localStorage.getItem('finished') === ''){
+            if(!localStorage.getItem('active') || !localStorage.getItem('finished')){
                 localStorage.setItem('active', JSON.stringify([]));
                 localStorage.setItem('finished', JSON.stringify([]));
                 localStorage.setItem('all', JSON.stringify([]));
@@ -262,6 +262,7 @@ function finishTask(i){
     } else if(mode === 'completed' || mode === 'active'){
         document.querySelector('.selected').click();
     }
+    document.querySelector(`.${selected}`).click();
     itemsNum.innerHTML = todoList.retActiveTask.length;
 }
 
@@ -313,5 +314,4 @@ function switchTask(select){
         document.querySelectorAll(`.${select}`).forEach(item => item.classList.add('selected'))
         todoList.retFinishTask.forEach(item => appendTodo(item, 'finished'))
     }
-    document.querySelector(`.${selected}`).click();
 }

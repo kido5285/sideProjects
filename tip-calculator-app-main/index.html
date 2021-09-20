@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+  <title>Frontend Mentor | Tip calculator app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <p class="title">SPLI<br>TTER</p>
+  <section class="main">
+    <div class="column1">
+      <div class="bill">
+        <div class="labels">
+          <span class="label">Bill</span>
+          <span class="errMes">Can't be Zero</span>
+        </div>
+        <div class="billInput">
+          <img src="images/icon-dollar.svg" class="dollar">
+          <input type="text" class="input" placeholder="0"> 
+        </div>
+      </div>
+      <div class="select">
+        <span class="label">Select Tip %</span>
+        <div class="btns">
+          <button class="amBtn item first">5%</button>
+          <button class="amBtn item">10%</button>
+          <button class="amBtn item">15%</button>
+          <button class="amBtn item">25%</button>
+          <button class="amBtn item">50%</button>
+          <input type="text" class="item custom" placeholder="Custom">
+        </div>
+      </div>
+      <div class="num">
+        <div class="labels">
+          <span class="label">Number of People</span>
+          <span class="errMes">Can't be Zero</span>
+        </div>
+        <div class="pepInput">  
+          <img src="images/icon-person.svg" class="people">
+          <input type="text" class="input" placeholder="0">
+        </div>
+      </div>
+    </div>
+    <div class="column2">
+      <div class="tipAm">
+        <div class="tipColumn1">
+          <p class="txt1">Tip Amount</p>
+          <span class="txt2">/ person</span>
+        </div>
+        <div class="tipColumn2">
+          <p class="amount"><i class="fas fa-dollar-sign"></i><span class="num">0.00</span></p>
+        </div>
+      </div>
+      <div class="total">
+        <div class="totalColumn1">
+          <p class="txt1">Total</p>
+          <span class="txt2">/ person</span>
+        </div>
+        <div class="totalColumn2">
+          <p class="amount"><i class="fas fa-dollar-sign"></i><span class="num">0.00</span></p>
+        </div>
+      </div>  
+      <button class="reset">reset</button>
+    </div>
+  </section>
+  <script src="script.js"></script>
+</body>
+</html>
